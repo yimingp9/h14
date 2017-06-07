@@ -23,9 +23,9 @@ int main( )
 	cout << "Enter number to be located: ";
 	cin >> key;
 	
-	search(a[], 0, final_index, key, found, location);
+	search(a, 0, final_index, key, found, location);
 
-	if !(found)
+	if (found)
 		cout << key << " is in index location " << location << endl;
 	else
 		cout << key << " is not in the array." << endl;
@@ -33,17 +33,17 @@ int main( )
 }
 
 void search(const int a[], int first, int last, int key, bool& found, int& location){
-	
+		
 	if (first > last) found = false;
 	else {
-		mid = (first + last) / 2;
+	        int mid = (first + last) / 2;
 		if (key == a[mid]) {
-			found = false;
+			found = true;
 			location = mid;
 		}
 		else if (key < a[mid])
 			search(a, first, mid - 1, key, found, location);
 		else if (key > a[mid])
-			search(a, mid, last, key, found, location);
+			search(a, mid+1, last, key, found, location);
 	}
 }
